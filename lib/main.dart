@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'page.dart'; // Impor halaman page.dart
-
+import 'page.dart'; 
+import 'login.dart'; 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,13 +10,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Qay's Page",
-      home: const HelloWorld(),
+      home: const LoginPage(),
     );
   }
 }
 
 class HelloWorld extends StatelessWidget {
-  const HelloWorld({super.key});
+  final String name;
+  final String role;
+  final String school;
+
+  const HelloWorld({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.school,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,7 @@ class HelloWorld extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('images/bg.png'),
-                fit: BoxFit.cover, // Background image fills container
+                fit: BoxFit.cover, 
               ),
             ),
           ),
@@ -37,8 +46,8 @@ class HelloWorld extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.all(20.0),
-                  width: 500, // Width of the box
-                  height: 400, // Height of the box
+                  width: 500,
+                  height: 400, 
                   child: Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
@@ -51,37 +60,48 @@ class HelloWorld extends StatelessWidget {
                         children: [
                           ClipOval(
                             child: Image(
-                              image: AssetImage('images/qay.jpg'),
-                              width: 150, // Increase width for bigger image
-                              height: 150, // Increase height for bigger image
+                              image: const AssetImage('images/qay.jpg'),
+                              width: 150, 
+                              height: 150, 
                               fit: BoxFit.cover,
                             ),
                           ),
                           const SizedBox(height: 20),
-                          const Text(
-                            'Qaysara Mahya Habibi',
-                            style: TextStyle(
+                          Text(
+                            name, 
+                            style: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
                             ),
                           ),
-                          const SizedBox(height: 5),
-                          const Text(
-                            'A Software and Game Development student from Wikrama Vocational High School Bogor.',
-                            style: TextStyle(
+                          const SizedBox(height: 2),
+                          Text(
+                            role,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey, 
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            school, 
+                            style: const TextStyle(
                               fontSize: 16,
                               fontFamily: 'Roboto',
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 5), // Space between text and button
-                          // Add the See More button here
+                          const SizedBox(height: 5), 
                           TextButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const PageScreen()),
+                                MaterialPageRoute(
+                                    builder: (context) => const PageScreen()),
                               );
                             },
                             child: const Text(
